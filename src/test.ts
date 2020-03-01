@@ -1,4 +1,4 @@
-import { Side, Board, Piece, Coord, rotateBoard } from "../type__piece";
+import { Side, Board, Piece, Coord, rotateBoard } from "./type__piece";
 
 import {
   PureGameState,
@@ -9,7 +9,7 @@ import {
   empty_squares,
   get_opponent_pieces_rotated,
   Rotated
-} from "../pure";
+} from "./pure";
 
 import { Color, Profession, AbsoluteCoord } from "cerke_online_api";
 
