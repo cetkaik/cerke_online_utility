@@ -1,0 +1,6 @@
+/src/
+/lib/**/*.test.js
+/lib/**/*.test.d.ts
+/node_modules/
+/tsconfig.json
+/test/mocha.opts
