@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "test": "mocha",
+    "build": "tsc",
     "format": "prettier --write '*.ts' 'test/*.ts'"
   },
   "repository": {
