@@ -1,6 +1,6 @@
 {
   "name": "cerke_online_utility",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "scripts": {
     "test": "mocha",
@@ -18,17 +18,17 @@
   },
   "homepage": "https://github.com/sozysozbot/cerke_online_utility",
   "devDependencies": {
-    "jest": "^25.1.0",
-    "mocha": "^7.0.1",
-    "prettier": "^1.19.1",
-    "ts-loader": "^6.0.4",
-    "typescript": "^3.7.5",
-    "webpack": "^4.35.3",
-    "webpack-cli": "^3.3.6",
-    "webpack-dev-server": "^3.7.2"
+    "jest": "^26.4.2",
+    "mocha": "^8.1.1",
+    "prettier": "^2.1.0",
+    "ts-loader": "^8.0.3",
+    "typescript": "^4.0.2",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "@types/mocha": "^7.0.1",
+    "@types/mocha": "^8.0.3",
     "cerke_online_api": "^1.0.0"
   }
 }
