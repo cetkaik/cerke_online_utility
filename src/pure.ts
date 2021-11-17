@@ -7,7 +7,7 @@ import {
   BoardIndex,
   coordEq,
   rotateCoord,
-  rotateBoard
+  rotateBoard,
 } from "./type__piece";
 
 import { Field } from "./game_state";
@@ -17,13 +17,13 @@ import {
   Profession,
   AbsoluteCoord,
   AbsoluteColumn,
-  AbsoluteRow
+  AbsoluteRow,
 } from "cerke_online_api";
 
 import {
   calculateMovablePositions,
   eightNeighborhood,
-  canGetOccupiedBy
+  canGetOccupiedBy,
 } from "./calculate_movable";
 
 export function toAbsoluteCoord_(
@@ -39,14 +39,14 @@ export function toAbsoluteCoord_(
     "X",
     "C",
     "M",
-    "P"
+    "P",
   ];
 
   const rows: AbsoluteRow[] = ["A", "E", "I", "U", "O", "Y", "AI", "AU", "IA"];
 
   return [
     rows[IA_is_down ? row : 8 - row],
-    columns[IA_is_down ? col : 8 - col]
+    columns[IA_is_down ? col : 8 - col],
   ];
 }
 
@@ -210,8 +210,8 @@ export type Rotated = {
 
 export const get_opponent_pieces_rotated: (
   gameState: PureGameState
-) => Rotated[] = gameState =>
-  boardIndices.flatMap(rand_i =>
+) => Rotated[] = (gameState) =>
+  boardIndices.flatMap((rand_i) =>
     boardIndices.flatMap((rand_j: BoardIndex): Rotated[] => {
       const coord: Coord = [rand_i, rand_j];
       const piece: Piece | null = gameState.f.currentBoard[rand_i][rand_j];
@@ -224,10 +224,10 @@ export const get_opponent_pieces_rotated: (
         const rot_piece: NonTam2PieceUpward = {
           prof: piece.prof,
           color: piece.color,
-          side: Side.Upward
+          side: Side.Upward,
         };
         return [
-          { rotated_piece: rot_piece, rotated_coord: rotateCoord(coord) }
+          { rotated_piece: rot_piece, rotated_coord: rotateCoord(coord) },
         ];
       } else {
         return [];
@@ -236,7 +236,7 @@ export const get_opponent_pieces_rotated: (
   );
 
 export const empty_squares = (gameState: PureGameState): Coord[] =>
-  boardIndices.flatMap(rand_i =>
+  boardIndices.flatMap((rand_i) =>
     boardIndices.flatMap((rand_j: BoardIndex) => {
       const coord: Coord = [rand_i, rand_j];
       if (gameState.f.currentBoard[rand_i][rand_j] == null) {
@@ -251,17 +251,17 @@ const empty_neighbors_of = (board: Board, c: Coord): Coord[] =>
 export const from_hand_candidates = (
   gameState: PureGameState
 ): PureOpponentMove[] =>
-  gameState.f.hop1zuo1OfDownward.flatMap(piece =>
-    empty_squares(gameState).flatMap(empty_square => [
+  gameState.f.hop1zuo1OfDownward.flatMap((piece) =>
+    empty_squares(gameState).flatMap((empty_square) => [
       {
         type: "NonTamMove",
         data: {
           type: "FromHand",
           color: piece.color,
           prof: piece.prof,
-          dest: toAbsoluteCoord_(empty_square, gameState.IA_is_down)
-        }
-      }
+          dest: toAbsoluteCoord_(empty_square, gameState.IA_is_down),
+        },
+      },
     ])
   );
 
@@ -271,19 +271,17 @@ export const not_from_hand_candidates_ = (
 ): PureOpponentMove[] =>
   get_opponent_pieces_rotated(gameState).flatMap(
     ({ rotated_piece, rotated_coord }) => {
-      const {
-        finite: guideListYellow,
-        infinite: guideListGreen
-      } = calculateMovablePositions(
-        rotated_coord,
-        rotated_piece,
-        rotateBoard(gameState.f.currentBoard),
-        gameState.tam_itself_is_tam_hue
-      );
+      const { finite: guideListYellow, infinite: guideListGreen } =
+        calculateMovablePositions(
+          rotated_coord,
+          rotated_piece,
+          rotateBoard(gameState.f.currentBoard),
+          gameState.tam_itself_is_tam_hue
+        );
 
       const candidates: Coord[] = [
         ...guideListYellow.map(rotateCoord),
-        ...guideListGreen.map(rotateCoord)
+        ...guideListGreen.map(rotateCoord),
       ];
 
       const src: Coord = rotateCoord(rotated_coord);
@@ -311,24 +309,21 @@ export const not_from_hand_candidates_ = (
           const subtracted_rotated_board = rotateBoard(
             gameState.f.currentBoard
           );
-          subtracted_rotated_board[rotated_coord[0]][
-            rotated_coord[1]
-          ] = null; /* must remove the piece to prevent self-occlusion */
+          subtracted_rotated_board[rotated_coord[0]][rotated_coord[1]] =
+            null; /* must remove the piece to prevent self-occlusion */
 
-          const {
-            finite: guideListYellow,
-            infinite: guideListGreen
-          } = calculateMovablePositions(
-            rotateCoord(step),
-            rotated_piece,
-            subtracted_rotated_board,
-            gameState.tam_itself_is_tam_hue
-          );
+          const { finite: guideListYellow, infinite: guideListGreen } =
+            calculateMovablePositions(
+              rotateCoord(step),
+              rotated_piece,
+              subtracted_rotated_board,
+              gameState.tam_itself_is_tam_hue
+            );
 
           const candidates: Coord[] = guideListYellow.map(rotateCoord);
           const candidates_inf: Coord[] = guideListGreen.map(rotateCoord);
           return [
-            ...candidates.flatMap(finalDest => {
+            ...candidates.flatMap((finalDest) => {
               if (
                 canGetOccupiedBy(
                   Side.Downward,
@@ -336,7 +331,7 @@ export const not_from_hand_candidates_ = (
                   {
                     color: rotated_piece.color,
                     prof: rotated_piece.prof,
-                    side: Side.Downward
+                    side: Side.Downward,
                   },
                   rotateBoard(subtracted_rotated_board),
                   gameState.tam_itself_is_tam_hue
@@ -353,13 +348,13 @@ export const not_from_hand_candidates_ = (
                       finalDest,
                       rotated_piece.prof,
                       src
-                    )
-                  }
+                    ),
+                  },
                 };
                 return [obj];
               } else return [];
             }),
-            ...candidates_inf.flatMap(planned_dest => {
+            ...candidates_inf.flatMap((planned_dest) => {
               if (
                 !canGetOccupiedBy(
                   Side.Downward,
@@ -367,7 +362,7 @@ export const not_from_hand_candidates_ = (
                   {
                     color: rotated_piece.color,
                     prof: rotated_piece.prof,
-                    side: Side.Downward
+                    side: Side.Downward,
                   },
                   rotateBoard(subtracted_rotated_board),
                   gameState.tam_itself_is_tam_hue
@@ -385,10 +380,10 @@ export const not_from_hand_candidates_ = (
                   gameState.IA_is_down
                 ),
                 stepping_ciurl: null,
-                finalResult: null
+                finalResult: null,
               };
               return [obj];
-            })
+            }),
           ];
         };
 
@@ -423,8 +418,8 @@ export const not_from_hand_candidates_ = (
                         gameState.IA_is_down
                       ),
                       firstDest: toAbsoluteCoord_(fstdst, gameState.IA_is_down),
-                      src: toAbsoluteCoord_(src, gameState.IA_is_down)
-                    }
+                      src: toAbsoluteCoord_(src, gameState.IA_is_down),
+                    },
                   ];
                 } else {
                   /* if not, step from there */
@@ -432,7 +427,7 @@ export const not_from_hand_candidates_ = (
                   return empty_neighbors_of(
                     rotateBoard(subtracted_rotated_board),
                     step
-                  ).flatMap(snddst => {
+                  ).flatMap((snddst) => {
                     return [
                       {
                         type: "TamMove",
@@ -446,8 +441,8 @@ export const not_from_hand_candidates_ = (
                           gameState.IA_is_down
                         ),
                         src: toAbsoluteCoord_(src, gameState.IA_is_down),
-                        step: toAbsoluteCoord_(step, gameState.IA_is_down)
-                      }
+                        step: toAbsoluteCoord_(step, gameState.IA_is_down),
+                      },
                     ];
                   });
                 }
@@ -459,19 +454,19 @@ export const not_from_hand_candidates_ = (
             return empty_neighbors_of(
               rotateBoard(subtracted_rotated_board),
               step
-            ).flatMap(fstdst =>
+            ).flatMap((fstdst) =>
               empty_neighbors_of(
                 rotateBoard(subtracted_rotated_board),
                 fstdst
-              ).flatMap(snddst => [
+              ).flatMap((snddst) => [
                 {
                   type: "TamMove",
                   stepStyle: "StepsDuringFormer",
                   firstDest: toAbsoluteCoord_(fstdst, gameState.IA_is_down),
                   secondDest: toAbsoluteCoord_(snddst, gameState.IA_is_down),
                   src: toAbsoluteCoord_(src, gameState.IA_is_down),
-                  step: toAbsoluteCoord_(step, gameState.IA_is_down)
-                }
+                  step: toAbsoluteCoord_(step, gameState.IA_is_down),
+                },
               ])
             );
           }
@@ -487,8 +482,8 @@ export const not_from_hand_candidates_ = (
                 dest,
                 rotated_piece.prof,
                 src
-              )
-            }
+              ),
+            },
           };
           return [obj];
         } else if (destPiece === "Tam2") {
@@ -509,7 +504,7 @@ export const not_from_hand_candidates_ = (
               {
                 color: rotated_piece.color,
                 prof: rotated_piece.prof,
-                side: Side.Downward
+                side: Side.Downward,
               },
               gameState.f.currentBoard,
               gameState.tam_itself_is_tam_hue
@@ -529,10 +524,10 @@ export const not_from_hand_candidates_ = (
                   dest,
                   rotated_piece.prof,
                   src
-                )
-              }
+                ),
+              },
             },
-            ...candidates_when_stepping(rotated_piece)
+            ...candidates_when_stepping(rotated_piece),
           ];
         } else {
           return candidates_when_stepping(rotated_piece);
@@ -554,6 +549,6 @@ export function get_valid_opponent_moves(
 ): PureOpponentMove[] {
   return [
     ...from_hand_candidates(gameState),
-    ...not_from_hand_candidates_({ allow_kut2tam2: false }, gameState)
+    ...not_from_hand_candidates_({ allow_kut2tam2: false }, gameState),
   ];
 }

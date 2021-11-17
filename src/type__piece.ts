@@ -2,7 +2,7 @@ import { Color, Profession } from "cerke_online_api";
 
 export enum Side {
   Upward, // Pieces that points upward. Denoted by @^@ in the ASCII notation.
-  Downward // Pieces that points downward. Denoted by @_@ in the ASCII notation.
+  Downward, // Pieces that points downward. Denoted by @_@ in the ASCII notation.
 }
 
 export interface NonTam2Piece {
@@ -17,7 +17,7 @@ export function fromUpOrDown(
   return {
     color: u_or_d.color,
     prof: u_or_d.prof,
-    side: u_or_d.side
+    side: u_or_d.side,
   };
 }
 
@@ -28,13 +28,13 @@ export function toUpOrDown(
     return {
       color: nontam.color,
       prof: nontam.prof,
-      side: nontam.side
+      side: nontam.side,
     };
   } else {
     return {
       color: nontam.color,
       prof: nontam.prof,
-      side: nontam.side
+      side: nontam.side,
     };
   }
 }
@@ -80,7 +80,7 @@ export function rotateBoard(b: Board): Board {
     [null, null, null, null, null, null, null, null, "Tam2"],
     [null, null, null, null, null, null, null, null, "Tam2"],
     [null, null, null, null, null, null, null, null, "Tam2"],
-    [null, null, null, null, null, null, null, null, "Tam2"]
+    [null, null, null, null, null, null, null, null, "Tam2"],
   ];
   for (let i = 0; i < 9; i++) {
     for (let j = 0; j < 9; j++) {

@@ -4,7 +4,7 @@ import {
   Board,
   Piece,
   Coord,
-  coordEq
+  coordEq,
 } from "./type__piece";
 
 import { Profession } from "cerke_online_api";
@@ -56,7 +56,7 @@ function applyDeltasIfNoIntervention(
   board: Board
 ): Coord[] {
   return ([] as Coord[]).concat(
-    ...deltas.map(delta =>
+    ...deltas.map((delta) =>
       applySingleDeltaIfNoIntervention(coord, delta, board)
     )
   );
@@ -98,7 +98,7 @@ function applyDeltasIfZeroOrOneIntervention(
   board: Board
 ): Coord[] {
   return ([] as Coord[]).concat(
-    ...deltas.map(delta =>
+    ...deltas.map((delta) =>
       applySingleDeltaIfZeroOrOneIntervention(coord, delta, board)
     )
   );
@@ -113,7 +113,7 @@ export function eightNeighborhood(coord: Coord): Coord[] {
     [0, 1],
     [1, -1],
     [1, 0],
-    [1, 1]
+    [1, 1],
   ]);
 }
 
@@ -243,7 +243,7 @@ export function calculateMovablePositions(
     [-4, -4],
     [-3, -3],
     [-2, -2],
-    [-1, -1]
+    [-1, -1],
   ];
   const UPRIGHT: Array<[number, number]> = [
     [-8, 8],
@@ -253,7 +253,7 @@ export function calculateMovablePositions(
     [-4, 4],
     [-3, 3],
     [-2, 2],
-    [-1, 1]
+    [-1, 1],
   ];
   const DOWNLEFT: Array<[number, number]> = [
     [8, -8],
@@ -263,7 +263,7 @@ export function calculateMovablePositions(
     [4, -4],
     [3, -3],
     [2, -2],
-    [1, -1]
+    [1, -1],
   ];
   const DOWNRIGHT: Array<[number, number]> = [
     [8, 8],
@@ -273,7 +273,7 @@ export function calculateMovablePositions(
     [4, 4],
     [3, 3],
     [2, 2],
-    [1, 1]
+    [1, 1],
   ];
   const UP: Array<[number, number]> = [
     [-1, 0],
@@ -283,7 +283,7 @@ export function calculateMovablePositions(
     [-5, 0],
     [-6, 0],
     [-7, 0],
-    [-8, 0]
+    [-8, 0],
   ];
   const DOWN: Array<[number, number]> = [
     [1, 0],
@@ -293,7 +293,7 @@ export function calculateMovablePositions(
     [5, 0],
     [6, 0],
     [7, 0],
-    [8, 0]
+    [8, 0],
   ];
   const LEFT: Array<[number, number]> = [
     [0, -1],
@@ -303,7 +303,7 @@ export function calculateMovablePositions(
     [0, -5],
     [0, -6],
     [0, -7],
-    [0, -8]
+    [0, -8],
   ];
   const RIGHT: Array<[number, number]> = [
     [0, 1],
@@ -313,7 +313,7 @@ export function calculateMovablePositions(
     [0, 5],
     [0, 6],
     [0, 7],
-    [0, 8]
+    [0, 8],
   ];
 
   if (isTamHue(coord, board, tam_itself_is_tam_hue)) {
@@ -327,9 +327,9 @@ export function calculateMovablePositions(
             [-2, -2],
             [-2, 2],
             [2, 2],
-            [2, -2]
+            [2, -2],
           ]),
-          infinite: []
+          infinite: [],
         }; // 車, vadyrd
 
       case Profession.Kauk2: // Pawn, 兵, elmer
@@ -339,11 +339,11 @@ export function calculateMovablePositions(
               [-1, 0],
               [0, -1],
               [0, 1],
-              [1, 0]
+              [1, 0],
             ]),
-            ...applySingleDeltaIfNoIntervention(coord, [-2, 0], board)
+            ...applySingleDeltaIfNoIntervention(coord, [-2, 0], board),
           ],
-          infinite: []
+          infinite: [],
         };
 
       case Profession.Nuak1: // Vessel, 船, felkana
@@ -351,18 +351,18 @@ export function calculateMovablePositions(
           finite: [
             ...applyDeltas(coord, [
               [0, -1],
-              [0, 1]
+              [0, 1],
             ]),
             ...applyDeltasIfNoIntervention(
               coord,
               [
                 [0, -2],
-                [0, 2]
+                [0, 2],
               ],
               board
-            )
+            ),
           ],
-          infinite: applyDeltasIfNoIntervention(coord, [...UP, ...DOWN], board)
+          infinite: applyDeltasIfNoIntervention(coord, [...UP, ...DOWN], board),
         };
 
       case Profession.Gua2: // Rook, 弓, gustuer
@@ -373,7 +373,7 @@ export function calculateMovablePositions(
             coord,
             [...UPLEFT, ...UPRIGHT, ...DOWNLEFT, ...DOWNRIGHT],
             board
-          )
+          ),
         };
 
       case Profession.Maun1: {
@@ -406,13 +406,13 @@ export function calculateMovablePositions(
           [5, 5],
           [4, 4],
           [3, 3],
-          [2, 2]
+          [2, 2],
         ];
         let inf: Coord[] = [];
         for (let i = 0; i < deltas.length; i++) {
           const delta = deltas[i];
           const blocker_deltas = getBlockerDeltas(delta).filter(
-            d =>
+            (d) =>
               /*
                * remove [-1, 1], [-1, -1], [1, -1] and [1, 1], because
                * pieces here will not prevent Tam2HueAMaun1 from moving.
@@ -427,7 +427,7 @@ export function calculateMovablePositions(
         }
         return {
           finite: [],
-          infinite: inf
+          infinite: inf,
         };
       }
       case Profession.Kua2: // Clerk, 筆, kua
@@ -437,7 +437,7 @@ export function calculateMovablePositions(
             coord,
             [...UP, ...DOWN, ...LEFT, ...RIGHT],
             board
-          )
+          ),
         };
 
       case Profession.Tuk2: // Shaman, 巫, terlsk
@@ -453,10 +453,10 @@ export function calculateMovablePositions(
               ...UPLEFT,
               ...UPRIGHT,
               ...DOWNLEFT,
-              ...DOWNRIGHT
+              ...DOWNRIGHT,
             ],
             board
-          )
+          ),
         };
 
       default:
@@ -474,9 +474,9 @@ export function calculateMovablePositions(
             [-2, 0],
             [2, 0],
             [0, -2],
-            [0, 2]
+            [0, 2],
           ]),
-          infinite: []
+          infinite: [],
         }; // 車, vadyrd
 
       case Profession.Dau2: // Tiger, 虎, stistyst
@@ -485,9 +485,9 @@ export function calculateMovablePositions(
             [-1, -1],
             [-1, 1],
             [1, -1],
-            [1, 1]
+            [1, 1],
           ]),
-          infinite: []
+          infinite: [],
         };
 
       case Profession.Maun1: // Horse, 馬, dodor
@@ -496,15 +496,15 @@ export function calculateMovablePositions(
             [-2, -2],
             [-2, 2],
             [2, 2],
-            [2, -2]
+            [2, -2],
           ]),
-          infinite: []
+          infinite: [],
         };
 
       case Profession.Nuak1: // Vessel, 船, felkana
         return {
           finite: [],
-          infinite: applyDeltasIfNoIntervention(coord, UP, board)
+          infinite: applyDeltasIfNoIntervention(coord, UP, board),
         };
 
       case Profession.Gua2: // Rook, 弓, gustuer
@@ -514,29 +514,29 @@ export function calculateMovablePositions(
             coord,
             [...UP, ...DOWN, ...LEFT, ...RIGHT],
             board
-          )
+          ),
         };
 
       case Profession.Kua2: // Clerk, 筆, kua
         return {
           finite: applyDeltas(coord, [
             [0, -1],
-            [0, 1]
+            [0, 1],
           ]),
-          infinite: applyDeltasIfNoIntervention(coord, [...UP, ...DOWN], board)
+          infinite: applyDeltasIfNoIntervention(coord, [...UP, ...DOWN], board),
         };
 
       case Profession.Tuk2: // Shaman, 巫, terlsk
         return {
           finite: applyDeltas(coord, [
             [-1, 0],
-            [1, 0]
+            [1, 0],
           ]),
           infinite: applyDeltasIfNoIntervention(
             coord,
             [...LEFT, ...RIGHT],
             board
-          )
+          ),
         };
 
       case Profession.Uai1: // General, 将, varxle
@@ -548,9 +548,9 @@ export function calculateMovablePositions(
             [0, -1],
             [0, 1],
             [1, -1],
-            [1, 1]
+            [1, 1],
           ]),
-          infinite: []
+          infinite: [],
         };
 
       default:

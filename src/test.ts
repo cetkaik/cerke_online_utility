@@ -8,7 +8,7 @@ import {
   from_hand_candidates,
   empty_squares,
   get_opponent_pieces_rotated,
-  Rotated
+  Rotated,
 } from "./pure";
 
 import { Color, Profession, AbsoluteCoord } from "cerke_online_api";
@@ -23,11 +23,11 @@ function assertEqualSet<T>(a: Set<T>, b: Set<T>): boolean {
     console.log(JSON.stringify([...b]));
     console.log(
       "in `a`, but not in `b`",
-      [...a].filter(value => !b.has(value))
+      [...a].filter((value) => !b.has(value))
     );
     console.log(
       "in `b`, but not in `a`",
-      [...b].filter(value => !a.has(value))
+      [...b].filter((value) => !a.has(value))
     );
   }
   return flag;
@@ -46,7 +46,7 @@ export function runTest<T>(
 }
 
 function isSetsEqual<T>(a: Set<T>, b: Set<T>): boolean {
-  return a.size === b.size && [...a].every(value => b.has(value));
+  return a.size === b.size && [...a].every((value) => b.has(value));
 }
 
 function serializeCoord(coord: Coord): string {
@@ -147,7 +147,7 @@ const initialBoard: Board = [
     { color: Color.Kok1, prof: Profession.Uai1, side: Side.Downward },
     { color: Color.Kok1, prof: Profession.Kaun1, side: Side.Downward },
     { color: Color.Kok1, prof: Profession.Maun1, side: Side.Downward },
-    { color: Color.Kok1, prof: Profession.Kua2, side: Side.Downward }
+    { color: Color.Kok1, prof: Profession.Kua2, side: Side.Downward },
   ],
   [
     { color: Color.Kok1, prof: Profession.Tuk2, side: Side.Downward },
@@ -158,7 +158,7 @@ const initialBoard: Board = [
     { color: Color.Huok2, prof: Profession.Dau2, side: Side.Downward },
     null,
     { color: Color.Huok2, prof: Profession.Gua2, side: Side.Downward },
-    { color: Color.Huok2, prof: Profession.Tuk2, side: Side.Downward }
+    { color: Color.Huok2, prof: Profession.Tuk2, side: Side.Downward },
   ],
   [
     { color: Color.Huok2, prof: Profession.Kauk2, side: Side.Downward },
@@ -169,7 +169,7 @@ const initialBoard: Board = [
     { color: Color.Kok1, prof: Profession.Kauk2, side: Side.Downward },
     { color: Color.Huok2, prof: Profession.Kauk2, side: Side.Downward },
     { color: Color.Kok1, prof: Profession.Kauk2, side: Side.Downward },
-    { color: Color.Huok2, prof: Profession.Kauk2, side: Side.Downward }
+    { color: Color.Huok2, prof: Profession.Kauk2, side: Side.Downward },
   ],
   [null, null, null, null, null, null, null, null, null],
   [null, null, null, null, "Tam2", null, null, null, null],
@@ -183,7 +183,7 @@ const initialBoard: Board = [
     { color: Color.Kok1, prof: Profession.Kauk2, side: Side.Upward },
     { color: Color.Huok2, prof: Profession.Kauk2, side: Side.Upward },
     { color: Color.Kok1, prof: Profession.Kauk2, side: Side.Upward },
-    { color: Color.Huok2, prof: Profession.Kauk2, side: Side.Upward }
+    { color: Color.Huok2, prof: Profession.Kauk2, side: Side.Upward },
   ],
   [
     { color: Color.Huok2, prof: Profession.Tuk2, side: Side.Upward },
@@ -194,7 +194,7 @@ const initialBoard: Board = [
     { color: Color.Kok1, prof: Profession.Dau2, side: Side.Upward },
     null,
     { color: Color.Kok1, prof: Profession.Gua2, side: Side.Upward },
-    { color: Color.Kok1, prof: Profession.Tuk2, side: Side.Upward }
+    { color: Color.Kok1, prof: Profession.Tuk2, side: Side.Upward },
   ],
   [
     { color: Color.Kok1, prof: Profession.Kua2, side: Side.Upward },
@@ -205,8 +205,8 @@ const initialBoard: Board = [
     { color: Color.Huok2, prof: Profession.Uai1, side: Side.Upward },
     { color: Color.Huok2, prof: Profession.Kaun1, side: Side.Upward },
     { color: Color.Huok2, prof: Profession.Maun1, side: Side.Upward },
-    { color: Color.Huok2, prof: Profession.Kua2, side: Side.Upward }
-  ]
+    { color: Color.Huok2, prof: Profession.Kua2, side: Side.Upward },
+  ],
 ];
 
 export const initialBoardSample: PureGameState = {
@@ -216,8 +216,8 @@ export const initialBoardSample: PureGameState = {
   f: {
     hop1zuo1OfDownward: [],
     hop1zuo1OfUpward: [],
-    currentBoard: initialBoard
-  }
+    currentBoard: initialBoard,
+  },
 };
 
 export const tamItselfIsNotTamHueSample: PureGameState = {
@@ -227,8 +227,8 @@ export const tamItselfIsNotTamHueSample: PureGameState = {
   f: {
     hop1zuo1OfDownward: [],
     hop1zuo1OfUpward: [],
-    currentBoard: initialBoard
-  }
+    currentBoard: initialBoard,
+  },
 };
 
 const simpleBoard: Board = [
@@ -241,7 +241,7 @@ const simpleBoard: Board = [
     null,
     null,
     null,
-    null
+    null,
   ],
   [null, null, null, null, null, null, null, null, null],
   [null, null, null, null, null, null, null, null, null],
@@ -257,10 +257,10 @@ const simpleBoard: Board = [
     null,
     null,
     null,
-    null
+    null,
   ],
   [null, null, null, null, null, null, null, null, null],
-  [null, null, null, null, null, null, null, null, null]
+  [null, null, null, null, null, null, null, null, null],
 ];
 
 const complicatedBoard: Board = [
@@ -273,7 +273,7 @@ const complicatedBoard: Board = [
     { color: Color.Kok1, prof: Profession.Kauk2, side: Side.Downward },
     { color: Color.Kok1, prof: Profession.Kauk2, side: Side.Upward },
     null,
-    null
+    null,
   ],
   [
     null,
@@ -284,7 +284,7 @@ const complicatedBoard: Board = [
     { color: Color.Kok1, prof: Profession.Dau2, side: Side.Upward },
     { color: Color.Kok1, prof: Profession.Uai1, side: Side.Upward },
     { color: Color.Kok1, prof: Profession.Kauk2, side: Side.Downward },
-    { color: Color.Kok1, prof: Profession.Gua2, side: Side.Upward }
+    { color: Color.Kok1, prof: Profession.Gua2, side: Side.Upward },
   ],
   [
     { color: Color.Huok2, prof: Profession.Kaun1, side: Side.Downward },
@@ -295,7 +295,7 @@ const complicatedBoard: Board = [
     { color: Color.Huok2, prof: Profession.Gua2, side: Side.Downward },
     { color: Color.Huok2, prof: Profession.Uai1, side: Side.Downward },
     { color: Color.Huok2, prof: Profession.Tuk2, side: Side.Downward },
-    { color: Color.Kok1, prof: Profession.Kua2, side: Side.Upward }
+    { color: Color.Kok1, prof: Profession.Kua2, side: Side.Upward },
   ],
   [
     null,
@@ -306,7 +306,7 @@ const complicatedBoard: Board = [
     { color: Color.Huok2, prof: Profession.Kauk2, side: Side.Downward },
     null,
     null,
-    { color: Color.Huok2, prof: Profession.Nuak1, side: Side.Downward }
+    { color: Color.Huok2, prof: Profession.Nuak1, side: Side.Downward },
   ],
   [
     null,
@@ -317,7 +317,7 @@ const complicatedBoard: Board = [
     { color: Color.Huok2, prof: Profession.Kauk2, side: Side.Upward },
     { color: Color.Huok2, prof: Profession.Tuk2, side: Side.Upward },
     { color: Color.Kok1, prof: Profession.Kauk2, side: Side.Downward },
-    null
+    null,
   ],
   [
     null,
@@ -328,7 +328,7 @@ const complicatedBoard: Board = [
     { color: Color.Kok1, prof: Profession.Maun1, side: Side.Upward },
     { color: Color.Huok2, prof: Profession.Gua2, side: Side.Downward },
     { color: Color.Kok1, prof: Profession.Kauk2, side: Side.Downward },
-    { color: Color.Huok2, prof: Profession.Maun1, side: Side.Upward }
+    { color: Color.Huok2, prof: Profession.Maun1, side: Side.Upward },
   ],
   [
     null,
@@ -339,7 +339,7 @@ const complicatedBoard: Board = [
     { color: Color.Huok2, prof: Profession.Kauk2, side: Side.Downward },
     { color: Color.Huok2, prof: Profession.Kua2, side: Side.Downward },
     { color: Color.Huok2, prof: Profession.Io, side: Side.Downward },
-    null
+    null,
   ],
   [
     null,
@@ -350,7 +350,7 @@ const complicatedBoard: Board = [
     { color: Color.Huok2, prof: Profession.Kauk2, side: Side.Upward },
     { color: Color.Kok1, prof: Profession.Kauk2, side: Side.Upward },
     null,
-    "Tam2"
+    "Tam2",
   ],
   [
     { color: Color.Kok1, prof: Profession.Kaun1, side: Side.Downward },
@@ -361,8 +361,8 @@ const complicatedBoard: Board = [
     { color: Color.Huok2, prof: Profession.Dau2, side: Side.Downward },
     { color: Color.Huok2, prof: Profession.Kauk2, side: Side.Downward },
     null,
-    null
-  ]
+    null,
+  ],
 ];
 
 const tamCorner: Board = [
@@ -381,7 +381,7 @@ const tamCorner: Board = [
     null,
     { color: Color.Huok2, prof: Profession.Kauk2, side: Side.Downward },
     { color: Color.Huok2, prof: Profession.Kauk2, side: Side.Downward },
-    { color: Color.Huok2, prof: Profession.Kauk2, side: Side.Downward }
+    { color: Color.Huok2, prof: Profession.Kauk2, side: Side.Downward },
   ],
   [
     null,
@@ -392,7 +392,7 @@ const tamCorner: Board = [
     null,
     { color: Color.Huok2, prof: Profession.Kauk2, side: Side.Downward },
     { color: Color.Huok2, prof: Profession.Kauk2, side: Side.Downward },
-    { color: Color.Huok2, prof: Profession.Kauk2, side: Side.Downward }
+    { color: Color.Huok2, prof: Profession.Kauk2, side: Side.Downward },
   ],
   [
     null,
@@ -403,8 +403,8 @@ const tamCorner: Board = [
     null,
     { color: Color.Huok2, prof: Profession.Kauk2, side: Side.Downward },
     { color: Color.Huok2, prof: Profession.Kauk2, side: Side.Downward },
-    "Tam2"
-  ]
+    "Tam2",
+  ],
 ];
 
 export const simpleBoardSample_1: PureGameState = {
@@ -414,8 +414,8 @@ export const simpleBoardSample_1: PureGameState = {
   f: {
     hop1zuo1OfDownward: [],
     hop1zuo1OfUpward: [],
-    currentBoard: simpleBoard
-  }
+    currentBoard: simpleBoard,
+  },
 };
 export const simpleBoardSample_2: PureGameState = {
   IA_is_down: false,
@@ -424,8 +424,8 @@ export const simpleBoardSample_2: PureGameState = {
   f: {
     hop1zuo1OfDownward: [],
     hop1zuo1OfUpward: [],
-    currentBoard: simpleBoard
-  }
+    currentBoard: simpleBoard,
+  },
 };
 
 export const simpleBoardSample_3: PureGameState = {
@@ -435,8 +435,8 @@ export const simpleBoardSample_3: PureGameState = {
   f: {
     hop1zuo1OfDownward: [],
     hop1zuo1OfUpward: [],
-    currentBoard: rotateBoard(simpleBoard)
-  }
+    currentBoard: rotateBoard(simpleBoard),
+  },
 };
 
 export const simpleBoardSample_4: PureGameState = {
@@ -448,18 +448,18 @@ export const simpleBoardSample_4: PureGameState = {
       {
         color: Color.Huok2,
         prof: Profession.Gua2,
-        side: Side.Downward
-      }
+        side: Side.Downward,
+      },
     ],
     hop1zuo1OfUpward: [
       {
         color: Color.Kok1,
         prof: Profession.Kauk2,
-        side: Side.Upward
-      }
+        side: Side.Upward,
+      },
     ],
-    currentBoard: rotateBoard(simpleBoard)
-  }
+    currentBoard: rotateBoard(simpleBoard),
+  },
 };
 
 export const complicatedBoardSample_1: PureGameState = {
@@ -469,8 +469,8 @@ export const complicatedBoardSample_1: PureGameState = {
   f: {
     hop1zuo1OfDownward: [],
     hop1zuo1OfUpward: [],
-    currentBoard: complicatedBoard
-  }
+    currentBoard: complicatedBoard,
+  },
 };
 
 export const complicatedBoardSample_2: PureGameState = {
@@ -480,8 +480,8 @@ export const complicatedBoardSample_2: PureGameState = {
   f: {
     hop1zuo1OfDownward: [],
     hop1zuo1OfUpward: [],
-    currentBoard: rotateBoard(complicatedBoard)
-  }
+    currentBoard: rotateBoard(complicatedBoard),
+  },
 };
 
 export const tamCornerSample: PureGameState = {
@@ -491,8 +491,8 @@ export const tamCornerSample: PureGameState = {
   f: {
     hop1zuo1OfDownward: [],
     hop1zuo1OfUpward: [],
-    currentBoard: tamCorner
-  }
+    currentBoard: tamCorner,
+  },
 };
 
 const initialMovesNoKutTam: string[] = [
@@ -760,11 +760,11 @@ const initialMovesNoKutTam: string[] = [
   "ZO皇[TU]ZIZE",
   "ZO皇[TU]ZITU",
   "ZO皇[TU]ZIZU",
-  "ZO皇[TU]ZIXU"
+  "ZO皇[TU]ZIXU",
 ];
 
-describe("not_from_hand_candidates_with_kut2tam2", function() {
-  it("tamCornerSample", function() {
+describe("not_from_hand_candidates_with_kut2tam2", function () {
+  it("tamCornerSample", function () {
     assert_.equal(
       runTest(
         not_from_hand_candidates_with_kut2tam2,
@@ -784,14 +784,14 @@ describe("not_from_hand_candidates_with_kut2tam2", function() {
 
           /* 撃皇 */
           "PAU片PIAPAU",
-          "MIA片PIAMIA"
+          "MIA片PIAMIA",
         ]
       ),
       true
     );
   });
 
-  it("tamItselfIsNotTamHueSample", function() {
+  it("tamItselfIsNotTamHueSample", function () {
     assert_.equal(
       runTest(
         not_from_hand_candidates_with_kut2tam2,
@@ -807,13 +807,13 @@ describe("not_from_hand_candidates_with_kut2tam2", function() {
           "ZI片ZO心ZAI",
           "ZI片ZO心ZU",
           "ZI片ZO心ZI",
-          "ZI片ZO心ZE"
+          "ZI片ZO心ZE",
         ]
       ),
       true
     );
   });
-  it("initialBoardSample", function() {
+  it("initialBoardSample", function () {
     assert_.equal(
       runTest(
         not_from_hand_candidates_with_kut2tam2,
@@ -829,7 +829,7 @@ describe("not_from_hand_candidates_with_kut2tam2", function() {
           "ZI片ZO心ZAI",
           "ZI片ZO心ZU",
           "ZI片ZO心ZI",
-          "ZI片ZO心ZE"
+          "ZI片ZO心ZE",
         ]
       ),
       true
@@ -837,8 +837,8 @@ describe("not_from_hand_candidates_with_kut2tam2", function() {
   });
 });
 
-describe("not_from_hand_candidates", function() {
-  it("simpleBoardSample_3", function() {
+describe("not_from_hand_candidates", function () {
+  it("simpleBoardSample_3", function () {
     assert_.equal(
       runTest(
         not_from_hand_candidates,
@@ -849,7 +849,7 @@ describe("not_from_hand_candidates", function() {
       true
     );
   });
-  it("simpleBoardSample_1: IA_is_down = true", function() {
+  it("simpleBoardSample_1: IA_is_down = true", function () {
     assert_.equal(
       runTest(
         not_from_hand_candidates,
@@ -871,13 +871,13 @@ describe("not_from_hand_candidates", function() {
           "KA片KAI心KU",
           "KA片KAI心KI",
           "KA片KAI心KE",
-          "KA片KAI心KA" /* step and then plan u-turn */
+          "KA片KAI心KA" /* step and then plan u-turn */,
         ]
       ),
       true
     );
   });
-  it("simpleBoardSample_2: IA_is_down = false", function() {
+  it("simpleBoardSample_2: IA_is_down = false", function () {
     assert_.equal(
       runTest(
         not_from_hand_candidates,
@@ -899,13 +899,13 @@ describe("not_from_hand_candidates", function() {
           "PIA片PI心PY",
           "PIA片PI心PAI",
           "PIA片PI心PAU",
-          "PIA片PI心PIA" /* step and then plan u-turn */
+          "PIA片PI心PIA" /* step and then plan u-turn */,
         ]
       ),
       true
     );
   });
-  it("initialBoardSample", function() {
+  it("initialBoardSample", function () {
     assert_.equal(
       runTest(
         not_from_hand_candidates,
@@ -916,7 +916,7 @@ describe("not_from_hand_candidates", function() {
       true
     );
   });
-  it("complicatedBoardSample_1", function() {
+  it("complicatedBoardSample_1", function () {
     assert_.equal(
       runTest(
         not_from_hand_candidates,
@@ -1257,13 +1257,13 @@ describe("not_from_hand_candidates", function() {
           "PAU皇MAI[PAU]PAI",
           "PAU皇MAI[PAU]MAU",
           "PAU皇MAI[PAU]MIA",
-          "PAU皇MAI[PAU]PIA"
+          "PAU皇MAI[PAU]PIA",
         ]
       ),
       true
     );
   });
-  it("complicatedBoardSample_2", function() {
+  it("complicatedBoardSample_2", function () {
     assert_.equal(
       runTest(
         not_from_hand_candidates,
@@ -1633,13 +1633,13 @@ describe("not_from_hand_candidates", function() {
           "XY片ZO心ME",
           "XY片ZO心CI",
           "XY片ZO心XU",
-          "XY片ZO心NI"
+          "XY片ZO心NI",
         ]
       ),
       true
     );
   });
-  it("tamCornerSample", function() {
+  it("tamCornerSample", function () {
     assert_.equal(
       runTest(
         not_from_hand_candidates,
@@ -1655,13 +1655,13 @@ describe("not_from_hand_candidates", function() {
           "MAU片MAIMAU",
           "PAU片MAUPAU",
           "PAU片PAIPAU",
-          "MIA片MAUMIA"
+          "MIA片MAUMIA",
         ]
       ),
       true
     );
   });
-  it("tamItselfIsNotTamHueSample", function() {
+  it("tamItselfIsNotTamHueSample", function () {
     assert_.equal(
       runTest(
         not_from_hand_candidates,
@@ -1674,8 +1674,8 @@ describe("not_from_hand_candidates", function() {
   });
 });
 
-describe("empty_squares", function() {
-  it("initialBoardSample", function() {
+describe("empty_squares", function () {
+  it("initialBoardSample", function () {
     assert_.equal(
       runTest(empty_squares, initialBoardSample, serializeCoord, [
         "[1,2]",
@@ -1711,14 +1711,14 @@ describe("empty_squares", function() {
 
         "[7,2]",
         "[7,4]",
-        "[7,6]"
+        "[7,6]",
       ]),
       true
     );
   });
 });
-describe("get_opponent_pieces_rotated", function() {
-  it("initialBoardSample", function() {
+describe("get_opponent_pieces_rotated", function () {
+  it("initialBoardSample", function () {
     assert_.equal(
       runTest(
         get_opponent_pieces_rotated,
@@ -1749,15 +1749,15 @@ describe("get_opponent_pieces_rotated", function() {
           "[6,2] 黒兵↑",
           "[6,1] 赤兵↑",
           "[6,0] 黒兵↑",
-          "[4,4] 皇"
+          "[4,4] 皇",
         ]
       ),
       true
     );
   });
 });
-describe("from_hand_candidates", function() {
-  it("initialBoardSample", function() {
+describe("from_hand_candidates", function () {
+  it("initialBoardSample", function () {
     assert_.equal(
       runTest(
         from_hand_candidates,
@@ -1768,7 +1768,7 @@ describe("from_hand_candidates", function() {
       true
     );
   });
-  it("simpleBoardSample_4", function() {
+  it("simpleBoardSample_4", function () {
     assert_.equal(
       runTest(
         from_hand_candidates,
@@ -1853,7 +1853,7 @@ describe("from_hand_candidates", function() {
           "黒弓ZIA",
           "黒弓XIA",
           "黒弓CIA",
-          "黒弓MIA"
+          "黒弓MIA",
         ]
       ),
       true

@@ -4,7 +4,7 @@ import {
   NonTam2PieceDownward,
   Board,
   Piece,
-  Coord
+  Coord,
 } from "./type__piece";
 
 import { Color, Profession } from "cerke_online_api";
@@ -46,7 +46,7 @@ export const initial_board_with_IA_down: Board = [
     { color: Color.Kok1, prof: Profession.Uai1, side: Side.Downward },
     { color: Color.Kok1, prof: Profession.Kaun1, side: Side.Downward },
     { color: Color.Kok1, prof: Profession.Maun1, side: Side.Downward },
-    { color: Color.Kok1, prof: Profession.Kua2, side: Side.Downward }
+    { color: Color.Kok1, prof: Profession.Kua2, side: Side.Downward },
   ],
   [
     { color: Color.Kok1, prof: Profession.Tuk2, side: Side.Downward },
@@ -57,7 +57,7 @@ export const initial_board_with_IA_down: Board = [
     { color: Color.Huok2, prof: Profession.Dau2, side: Side.Downward },
     null,
     { color: Color.Huok2, prof: Profession.Gua2, side: Side.Downward },
-    { color: Color.Huok2, prof: Profession.Tuk2, side: Side.Downward }
+    { color: Color.Huok2, prof: Profession.Tuk2, side: Side.Downward },
   ],
   [
     { color: Color.Huok2, prof: Profession.Kauk2, side: Side.Downward },
@@ -68,7 +68,7 @@ export const initial_board_with_IA_down: Board = [
     { color: Color.Kok1, prof: Profession.Kauk2, side: Side.Downward },
     { color: Color.Huok2, prof: Profession.Kauk2, side: Side.Downward },
     { color: Color.Kok1, prof: Profession.Kauk2, side: Side.Downward },
-    { color: Color.Huok2, prof: Profession.Kauk2, side: Side.Downward }
+    { color: Color.Huok2, prof: Profession.Kauk2, side: Side.Downward },
   ],
   [null, null, null, null, null, null, null, null, null],
   [null, null, null, null, "Tam2", null, null, null, null],
@@ -82,7 +82,7 @@ export const initial_board_with_IA_down: Board = [
     { color: Color.Kok1, prof: Profession.Kauk2, side: Side.Upward },
     { color: Color.Huok2, prof: Profession.Kauk2, side: Side.Upward },
     { color: Color.Kok1, prof: Profession.Kauk2, side: Side.Upward },
-    { color: Color.Huok2, prof: Profession.Kauk2, side: Side.Upward }
+    { color: Color.Huok2, prof: Profession.Kauk2, side: Side.Upward },
   ],
   [
     { color: Color.Huok2, prof: Profession.Tuk2, side: Side.Upward },
@@ -93,7 +93,7 @@ export const initial_board_with_IA_down: Board = [
     { color: Color.Kok1, prof: Profession.Dau2, side: Side.Upward },
     null,
     { color: Color.Kok1, prof: Profession.Gua2, side: Side.Upward },
-    { color: Color.Kok1, prof: Profession.Tuk2, side: Side.Upward }
+    { color: Color.Kok1, prof: Profession.Tuk2, side: Side.Upward },
   ],
   [
     { color: Color.Kok1, prof: Profession.Kua2, side: Side.Upward },
@@ -104,6 +104,6 @@ export const initial_board_with_IA_down: Board = [
     { color: Color.Huok2, prof: Profession.Uai1, side: Side.Upward },
     { color: Color.Huok2, prof: Profession.Kaun1, side: Side.Upward },
     { color: Color.Huok2, prof: Profession.Maun1, side: Side.Upward },
-    { color: Color.Huok2, prof: Profession.Kua2, side: Side.Upward }
-  ]
+    { color: Color.Huok2, prof: Profession.Kua2, side: Side.Upward },
+  ],
 ];
