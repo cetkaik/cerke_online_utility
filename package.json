@@ -31,6 +31,6 @@
     "@types/mocha": "9.1.0"
   },
   "dependencies": {
-    "cerke_online_api": "1.8.0"
+    "cerke_online_api": "1.9.0"
   }
 }
