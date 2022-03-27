@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.0.9](https://github.com/sozysozbot/cerke_online_utility/compare/v0.0.7...v0.0.9) (2022-03-27)
+
+
+### Miscellaneous Chores
+
+* release 0.0.9 ([8f480c2](https://github.com/sozysozbot/cerke_online_utility/commit/8f480c20aab94f499aa47f1ed8d9abe528618eb7))
+
 ### [0.0.7](https://www.github.com/sozysozbot/cerke_online_utility/compare/v0.0.6...v0.0.7) (2021-11-18)
 
 
