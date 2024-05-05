@@ -12,8 +12,7 @@ import {
 } from "./pure";
 
 import { Color, Profession, AbsoluteCoord } from "cerke_online_api";
-
-var assert_ = require("assert");
+import { equal as assertEqual } from "assert";
 
 function assertEqualSet<T>(a: Set<T>, b: Set<T>): boolean {
   const flag = isSetsEqual(a, b);
@@ -103,8 +102,7 @@ function serializePureOpponentMove(move: PureOpponentMove): string {
         move.data.dest
       )}${move.data.is_water_entry_ciurl ? "水" : ""}`;
     } else {
-      const _: never = move.data;
-      throw new Error("cannot happen");
+      return move.data satisfies never;
     }
   } else if (move.type === "InfAfterStep") {
     return `${serializeAbsoluteCoord(move.src)}片${serializeAbsoluteCoord(
@@ -128,12 +126,10 @@ function serializePureOpponentMove(move: PureOpponentMove): string {
         move.secondDest
       )}`;
     } else {
-      const _: never = move.stepStyle;
-      throw new Error("cannot happen");
+      return move.stepStyle satisfies never;
     }
   } else {
-    const _: never = move;
-    throw new Error("cannot happen");
+    return move satisfies never;
   }
 }
 
@@ -765,7 +761,7 @@ const initialMovesNoKutTam: string[] = [
 
 describe("not_from_hand_candidates_with_kut2tam2", function () {
   it("tamCornerSample", function () {
-    assert_.equal(
+    assertEqual(
       runTest(
         not_from_hand_candidates_with_kut2tam2,
         tamCornerSample,
@@ -792,7 +788,7 @@ describe("not_from_hand_candidates_with_kut2tam2", function () {
   });
 
   it("tamItselfIsNotTamHueSample", function () {
-    assert_.equal(
+    assertEqual(
       runTest(
         not_from_hand_candidates_with_kut2tam2,
         tamItselfIsNotTamHueSample,
@@ -814,7 +810,7 @@ describe("not_from_hand_candidates_with_kut2tam2", function () {
     );
   });
   it("initialBoardSample", function () {
-    assert_.equal(
+    assertEqual(
       runTest(
         not_from_hand_candidates_with_kut2tam2,
         initialBoardSample,
@@ -839,7 +835,7 @@ describe("not_from_hand_candidates_with_kut2tam2", function () {
 
 describe("not_from_hand_candidates", function () {
   it("simpleBoardSample_3", function () {
-    assert_.equal(
+    assertEqual(
       runTest(
         not_from_hand_candidates,
         simpleBoardSample_3,
@@ -850,7 +846,7 @@ describe("not_from_hand_candidates", function () {
     );
   });
   it("simpleBoardSample_1: IA_is_down = true", function () {
-    assert_.equal(
+    assertEqual(
       runTest(
         not_from_hand_candidates,
         simpleBoardSample_1,
@@ -878,7 +874,7 @@ describe("not_from_hand_candidates", function () {
     );
   });
   it("simpleBoardSample_2: IA_is_down = false", function () {
-    assert_.equal(
+    assertEqual(
       runTest(
         not_from_hand_candidates,
         simpleBoardSample_2,
@@ -906,7 +902,7 @@ describe("not_from_hand_candidates", function () {
     );
   });
   it("initialBoardSample", function () {
-    assert_.equal(
+    assertEqual(
       runTest(
         not_from_hand_candidates,
         initialBoardSample,
@@ -917,7 +913,7 @@ describe("not_from_hand_candidates", function () {
     );
   });
   it("complicatedBoardSample_1", function () {
-    assert_.equal(
+    assertEqual(
       runTest(
         not_from_hand_candidates,
         complicatedBoardSample_1,
@@ -1264,7 +1260,7 @@ describe("not_from_hand_candidates", function () {
     );
   });
   it("complicatedBoardSample_2", function () {
-    assert_.equal(
+    assertEqual(
       runTest(
         not_from_hand_candidates,
         complicatedBoardSample_2,
@@ -1640,7 +1636,7 @@ describe("not_from_hand_candidates", function () {
     );
   });
   it("tamCornerSample", function () {
-    assert_.equal(
+    assertEqual(
       runTest(
         not_from_hand_candidates,
         tamCornerSample,
@@ -1662,7 +1658,7 @@ describe("not_from_hand_candidates", function () {
     );
   });
   it("tamItselfIsNotTamHueSample", function () {
-    assert_.equal(
+    assertEqual(
       runTest(
         not_from_hand_candidates,
         tamItselfIsNotTamHueSample,
@@ -1676,7 +1672,7 @@ describe("not_from_hand_candidates", function () {
 
 describe("empty_squares", function () {
   it("initialBoardSample", function () {
-    assert_.equal(
+    assertEqual(
       runTest(empty_squares, initialBoardSample, serializeCoord, [
         "[1,2]",
         "[1,4]",
@@ -1719,7 +1715,7 @@ describe("empty_squares", function () {
 });
 describe("get_opponent_pieces_rotated", function () {
   it("initialBoardSample", function () {
-    assert_.equal(
+    assertEqual(
       runTest(
         get_opponent_pieces_rotated,
         initialBoardSample,
@@ -1758,7 +1754,7 @@ describe("get_opponent_pieces_rotated", function () {
 });
 describe("from_hand_candidates", function () {
   it("initialBoardSample", function () {
-    assert_.equal(
+    assertEqual(
       runTest(
         from_hand_candidates,
         initialBoardSample,
@@ -1769,7 +1765,7 @@ describe("from_hand_candidates", function () {
     );
   });
   it("simpleBoardSample_4", function () {
-    assert_.equal(
+    assertEqual(
       runTest(
         from_hand_candidates,
         simpleBoardSample_4,
