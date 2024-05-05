@@ -458,10 +458,6 @@ export function calculateMovablePositions(
             board
           ),
         };
-
-      default:
-        const _should_not_reach_here: never = piece.prof;
-        return _should_not_reach_here;
     }
   } else {
     switch (piece.prof) {
@@ -552,10 +548,6 @@ export function calculateMovablePositions(
           ]),
           infinite: [],
         };
-
-      default:
-        const _should_not_reach_here: never = piece.prof;
-        return _should_not_reach_here;
     }
   }
 }

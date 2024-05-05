@@ -75,8 +75,7 @@ export function fromAbsoluteCoord_(
   } else if (absrow === "IA") {
     rowind = 8;
   } else {
-    const _should_not_reach_here: never = absrow;
-    throw new Error("does not happen");
+    rowind = absrow satisfies never;
   }
 
   let colind: BoardIndex;
@@ -100,8 +99,7 @@ export function fromAbsoluteCoord_(
   } else if (abscol === "P") {
     colind = 8;
   } else {
-    const _should_not_reach_here: never = abscol;
-    throw new Error("does not happen");
+    colind = abscol satisfies never;
   }
 
   if (IA_is_down) {
