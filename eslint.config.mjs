@@ -13,5 +13,14 @@ export default tseslint.config(
         tsconfigRootDir: import.meta.dirname,
       }
     }
+  },
+  {
+    files: ['eslint.config.mjs'],
+    ...tseslint.configs.disableTypeChecked,
+  },
+  {
+    ignores: [
+      "lib/**"
+    ]
   }
 );
