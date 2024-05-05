@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: write
+      pull-requests: write
     steps:
       - uses: GoogleCloudPlatform/release-please-action@v3
         id: release
