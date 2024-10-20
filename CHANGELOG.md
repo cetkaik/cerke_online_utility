@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.10](https://github.com/cetkaik/cerke_online_utility/compare/v0.0.9...v0.0.10) (2024-10-20)
+
+
+### Miscellaneous Chores
+
+* release 0.0.10 ([50c8755](https://github.com/cetkaik/cerke_online_utility/commit/50c8755eef3f82c979235e74454620a9f7981f13))
+
 ### [0.0.9](https://github.com/sozysozbot/cerke_online_utility/compare/v0.0.7...v0.0.9) (2022-03-27)
 
 
